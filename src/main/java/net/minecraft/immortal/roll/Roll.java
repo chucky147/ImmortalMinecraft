@@ -1,24 +1,26 @@
 package net.minecraft.immortal.roll;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.immortal.enchantments.RandomizerEnchantment;
-import net.minecraft.immortal.initializers.EnchantmentInitializer;
+import net.minecraft.immortal.enchantments.RarityEnchantment;
+
+import static net.minecraft.immortal.initializers.EnchantmentInitializer.*;
 
 public class Roll {
     private static int roll(){
         return (int)(Math.random() * 100 + 1);
     }
 
-    public static RandomizerEnchantment rollRarity() {
+    public static RarityEnchantment rollRarity() {
         int dice = roll();
-        if (dice < 5) {
-            return EnchantmentInitializer.VERY_RARE_ENCHANTMENT;
+        if (dice < 1) {
+            return LEGENDARY_ENCHANTMENT;
+        } else if (dice < 5) {
+            return VERY_RARE_ENCHANTMENT;
         } else if (dice < 5 + 10) {
-            return EnchantmentInitializer.RARE_ENCHANTMENT;
+            return RARE_ENCHANTMENT;
         } else if (dice < 15 + 15) {
-            return EnchantmentInitializer.UNCOMMON_ENCHANTMENT;
+            return UNCOMMON_ENCHANTMENT;
         } else {
-            return EnchantmentInitializer.COMMON_ENCHANTMENT;
+            return COMMON_ENCHANTMENT;
         }
     }
 }

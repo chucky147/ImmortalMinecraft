@@ -21,7 +21,7 @@ import net.minecraft.util.Rarity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ImmortalSwordItem extends ToolItem implements Vanishable {
+public class ImmortalSwordItem extends ImmortalToolItem implements Vanishable {
     private final float attackDamage;
     private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
@@ -74,49 +74,6 @@ public class ImmortalSwordItem extends ToolItem implements Vanishable {
 
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot slot) {
         return slot == EquipmentSlot.MAINHAND ? this.attributeModifiers : super.getAttributeModifiers(slot);
-    }
-
-    @Override
-    public Rarity getRarity(ItemStack stack) {
-        if (isCommon(stack)) return Rarity.COMMON;
-        if (isUncommon(stack)) return Rarity.UNCOMMON;
-        if (isRare(stack)) return Rarity.RARE;
-        if (isVeryRare(stack)) return Rarity.EPIC;
-        return super.getRarity(stack);
-    }
-
-    @Override
-    public boolean hasGlint(ItemStack stack) {
-        if (stack.getEnchantments().size() != 1) {
-            return super.hasGlint(stack);
-        } else {
-            return !hasOnlyRarityEnchantment(stack);
-        }
-    }
-
-    private boolean hasOnlyRarityEnchantment (ItemStack stack) {
-        return isCommon(stack)
-                || isUncommon(stack)
-                || isRare(stack)
-                || isVeryRare(stack);
-    }
-
-    private boolean isCommon (ItemStack stack) {
-        return stack.getEnchantments().contains(EnchantmentHelper.createNbt(new Identifier("immortal", "common"), 1));
-    }
-    private boolean isUncommon (ItemStack stack) {
-        return stack.getEnchantments().contains(EnchantmentHelper.createNbt(new Identifier("immortal", "uncommon"), 1));
-    }
-    private boolean isRare (ItemStack stack) {
-        return stack.getEnchantments().contains(EnchantmentHelper.createNbt(new Identifier("immortal", "rare"), 1));
-    }
-    private boolean isVeryRare (ItemStack stack) {
-        return stack.getEnchantments().contains(EnchantmentHelper.createNbt(new Identifier("immortal", "very_rare"), 1));
-    }
-    @Override
-    public void onCraft(ItemStack stack, World world, PlayerEntity player) {
-        stack.addEnchantment(Roll.rollRarity(), 1);
-        super.onCraft(stack, world, player);
     }
 }
 

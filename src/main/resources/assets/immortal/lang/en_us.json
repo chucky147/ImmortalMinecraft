@@ -33,5 +33,6 @@
   "enchantment.immortal.common": "Common",
   "enchantment.immortal.uncommon": "Uncommon",
   "enchantment.immortal.rare": "Rare",
-  "enchantment.immortal.very_rare": "Epic"
+  "enchantment.immortal.epic": "Epic",
+  "enchantment.immortal.legendary": "Legendary"
 }
