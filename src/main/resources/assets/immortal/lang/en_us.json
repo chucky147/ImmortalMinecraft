@@ -30,9 +30,12 @@
   "item.immortal.netherite_axe": "Immortal Netherite Axe",
   "item.immortal.netherite_hoe": "Immortal Netherite Hoe",
 
-  "enchantment.immortal.common": "Common",
-  "enchantment.immortal.uncommon": "Uncommon",
-  "enchantment.immortal.rare": "Rare",
-  "enchantment.immortal.epic": "Epic",
-  "enchantment.immortal.legendary": "Legendary"
+  "enchantment.immortal.common.tooltip": "Common",
+  "enchantment.immortal.uncommon.tooltip": "Uncommon",
+  "enchantment.immortal.rare.tooltip": "Rare",
+  "enchantment.immortal.epic.tooltip": "Epic",
+  "enchantment.immortal.legendary.tooltip": "Legendary",
+  "enchantment.immortal.withers_touch_effect.tooltip1": "Withers's Touch:",
+  "enchantment.immortal.withers_touch_effect.tooltip2": "On damage, causes damage",
+  "enchantment.immortal.withers_touch_effect.tooltip3": "to the enemy for %d seconds."
 }

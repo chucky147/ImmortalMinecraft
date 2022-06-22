@@ -1,22 +1,26 @@
 package net.minecraft.immortal.items.tools;
 
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.item.TooltipData;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.immortal.initializers.EnchantmentInitializer;
 import net.minecraft.immortal.roll.Roll;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.text.*;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Rarity;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
-import javax.swing.text.StyleConstants;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Optional;
 
 public class ImmortalToolItem extends Item{
+    public static final String ENCHANTMENT_IMMORTAL_LEGENDARY = "enchantment.immortal.legendary";
     private final ToolMaterial material;
 
     public ImmortalToolItem(ToolMaterial material, Item.Settings settings) {
@@ -39,25 +43,18 @@ public class ImmortalToolItem extends Item{
     @Override
     public Text getName(ItemStack stack) {
         if (isLegendary(stack)) {
-            try {
-                return super.getName(stack).getWithStyle(super.getName().getStyle().withColor(16753920)).get(0);
-            } catch (IndexOutOfBoundsException e){
-                Logger.getLogger("ImmortalToolItem.GetName: ").log(Level.WARNING, e.toString());
-                return super.getName(stack);
-            }
+            return super.getName(stack).copy().setStyle(Style.EMPTY.withColor(16753920).withFormatting(Formatting.BOLD, Formatting.ITALIC));
+        } else if (isVeryRare(stack)) {
+            return super.getName(stack).copy().setStyle(Style.EMPTY.withFormatting(Formatting.BOLD, Formatting.DARK_PURPLE));
+        } else if (isRare(stack)) {
+            return super.getName(stack).copy().setStyle(Style.EMPTY.withFormatting(Formatting.YELLOW));
+        } else if (isUncommon(stack)) {
+            return super.getName(stack).copy().setStyle(Style.EMPTY.withFormatting(Formatting.BLUE));
         } else {
-            return super.getName(stack);
+            return super.getName(stack).copy().setStyle(Style.EMPTY.withFormatting(Formatting.WHITE));
         }
     }
 
-    @Override
-    public Rarity getRarity(ItemStack stack) {
-        if (isCommon(stack)) return Rarity.COMMON;
-        if (isUncommon(stack)) return Rarity.UNCOMMON;
-        if (isRare(stack)) return Rarity.RARE;
-        if (isVeryRare(stack)) return Rarity.EPIC;
-        return super.getRarity(stack);
-    }
 
     @Override
     public boolean hasGlint(ItemStack stack) {
@@ -66,6 +63,16 @@ public class ImmortalToolItem extends Item{
         } else {
             return !hasOnlyRarityEnchantment(stack);
         }
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        TooltipHelper.appendLegendaryEffectText(tooltip, stack);
+    }
+
+    @Override
+    public Optional<TooltipData> getTooltipData(ItemStack stack) {
+        return Optional.empty();
     }
 
     private boolean hasOnlyRarityEnchantment (ItemStack stack) {
@@ -92,7 +99,13 @@ public class ImmortalToolItem extends Item{
     }
     @Override
     public void onCraft(ItemStack stack, World world, PlayerEntity player) {
-        stack.addEnchantment(Roll.rollRarity(), 1);
+        Enchantment rarity = Roll.rollRarity();
+        if (rarity.getTranslationKey().equals(ENCHANTMENT_IMMORTAL_LEGENDARY)) {
+            stack.addEnchantment(EnchantmentInitializer.WITHERS_TOUCH_ENCHANTMENT, 1);
+        }
+        stack.addEnchantment(rarity, 1);
+        stack.addHideFlag(ItemStack.TooltipSection.ENCHANTMENTS);
         super.onCraft(stack, world, player);
     }
+
 }
