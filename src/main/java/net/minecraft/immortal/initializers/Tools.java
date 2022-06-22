@@ -5,7 +5,7 @@ import net.minecraft.item.ToolMaterials;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class ToolsInitializer {
+public abstract class Tools {
     private static final ImmortalSword IMMORTAL_WOODEN_SWORD = new ImmortalSword(ToolMaterials.WOOD,3, -2.4F);
     private static final ImmortalShovel IMMORTAL_WOODEN_SHOVEL = new ImmortalShovel(ToolMaterials.WOOD,1.5F, -3.0F);
     private static final ImmortalPickaxe IMMORTAL_WOODEN_PICKAXE = new ImmortalPickaxe(ToolMaterials.WOOD,1, -2.8F);

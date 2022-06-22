@@ -5,7 +5,7 @@ import net.minecraft.client.item.TooltipData;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.immortal.initializers.EnchantmentInitializer;
+import net.minecraft.immortal.initializers.Enchantments;
 import net.minecraft.immortal.roll.Roll;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -101,7 +101,7 @@ public class ImmortalToolItem extends Item{
     public void onCraft(ItemStack stack, World world, PlayerEntity player) {
         Enchantment rarity = Roll.rollRarity();
         if (rarity.getTranslationKey().equals(ENCHANTMENT_IMMORTAL_LEGENDARY)) {
-            stack.addEnchantment(EnchantmentInitializer.WITHERS_TOUCH_ENCHANTMENT, 1);
+            stack.addEnchantment(Enchantments.WITHERS_TOUCH_ENCHANTMENT, 1);
         }
         stack.addEnchantment(rarity, 1);
         stack.addHideFlag(ItemStack.TooltipSection.ENCHANTMENTS);

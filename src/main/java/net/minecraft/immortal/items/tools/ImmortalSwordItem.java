@@ -34,10 +34,6 @@ public class ImmortalSwordItem extends ImmortalToolItem implements Vanishable {
         this.attributeModifiers = builder.build();
     }
 
-    public float getAttackDamage() {
-        return this.attackDamage;
-    }
-
     public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
         return !miner.isCreative();
     }

@@ -2,7 +2,7 @@ package net.minecraft.immortal.roll;
 
 import net.minecraft.immortal.enchantments.RarityEnchantment;
 
-import static net.minecraft.immortal.initializers.EnchantmentInitializer.*;
+import static net.minecraft.immortal.initializers.Rarities.*;
 
 public class Roll {
     private static int roll(){
@@ -11,7 +11,7 @@ public class Roll {
 
     public static RarityEnchantment rollRarity() {
         int dice = roll();
-        if (dice < 1) {
+        if (dice < 100) {
             return LEGENDARY_ENCHANTMENT;
         } else if (dice < 5) {
             return VERY_RARE_ENCHANTMENT;
