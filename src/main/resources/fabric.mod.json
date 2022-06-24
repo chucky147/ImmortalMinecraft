@@ -23,6 +23,7 @@
     ]
   },
   "mixins": [
+    "immortal.mixins.json"
   ],
 
   "depends": {

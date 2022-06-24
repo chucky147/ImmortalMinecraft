@@ -7,7 +7,7 @@ import net.minecraft.immortal.enchantments.effect.WithersTouchEnchantment;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class Enchantments {
+public abstract class Enchantments {
 
     private static final EquipmentSlot[] ALL_ARMOR = new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
     public static final WithersTouchEnchantment WITHERS_TOUCH_ENCHANTMENT = new WithersTouchEnchantment(new EquipmentSlot[] {EquipmentSlot.MAINHAND});

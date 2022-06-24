@@ -16,7 +16,7 @@ public class TooltipHelper {
             tooltip.add(Text.translatable("enchantment.immortal.common.tooltip").formatted(Formatting.WHITE));
         }
         if (stack.getEnchantments().contains(EnchantmentHelper.createNbt(new Identifier("immortal", "uncommon"), 1))){
-            tooltip.add(Text.translatable("enchantment.immortal.uncommon.tooltip").formatted(Formatting.WHITE));
+            tooltip.add(Text.translatable("enchantment.immortal.uncommon.tooltip").formatted(Formatting.DARK_BLUE));
         }
         if (stack.getEnchantments().contains(EnchantmentHelper.createNbt(new Identifier("immortal", "rare"), 1))){
             tooltip.add(Text.translatable("enchantment.immortal.rare.tooltip").formatted(Formatting.GOLD));

@@ -12,6 +12,7 @@ public class RarityEnchantment extends Enchantment {
     private static final String RARE = "enchantment.immortal.rare";
     private static final String EPIC = "enchantment.immortal.epic";
     private static final String LEGENDARY = "enchantment.immortal.legendary";
+
     public RarityEnchantment(EquipmentSlot[] slotTypes) {
         super(Rarity.COMMON, EnchantmentTarget.BREAKABLE, slotTypes);
     }
@@ -43,6 +44,9 @@ public class RarityEnchantment extends Enchantment {
             default -> 0.6f;
         };
     }
+
+
+
     private int getProtectionByRarity() {
         return switch (this.getOrCreateTranslationKey()) {
             case UNCOMMON, RARE -> 1;
