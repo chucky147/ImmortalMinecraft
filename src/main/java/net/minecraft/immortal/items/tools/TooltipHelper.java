@@ -32,6 +32,12 @@ public class TooltipHelper {
             tooltip.add(Text.translatable("enchantment.immortal.withers_touch_effect.tooltip2"));
             tooltip.add(Text.translatable("enchantment.immortal.withers_touch_effect.tooltip3", 4));
         }
+        if (stack.getEnchantments().contains(EnchantmentHelper.createNbt(new Identifier("immortal", "la_palma_effect"), 1))){
+            tooltip.add(Text.translatable("enchantment.immortal.la_palma_effect.tooltip1").formatted(Formatting.RED));
+            tooltip.add(Text.translatable("enchantment.immortal.la_palma_effect.tooltip2"));
+            tooltip.add(Text.translatable("enchantment.immortal.la_palma_effect.tooltip3"));
+            tooltip.add(Text.translatable("enchantment.immortal.la_palma_effect.tooltip4", 1.5, 2));
+        }
 
     }
 }

@@ -38,5 +38,9 @@
   "enchantment.immortal.legendary.tooltip": "Legendary",
   "enchantment.immortal.withers_touch_effect.tooltip1": "Withers's Touch:",
   "enchantment.immortal.withers_touch_effect.tooltip2": "On damage, causes damage",
-  "enchantment.immortal.withers_touch_effect.tooltip3": "to the enemy for %d seconds."
+  "enchantment.immortal.withers_touch_effect.tooltip3": "to the enemy for %d seconds.",
+  "enchantment.immortal.la_palma_effect.tooltip1": "La Palma:",
+  "enchantment.immortal.la_palma_effect.tooltip2": "When player receives damage,",
+  "enchantment.immortal.la_palma_effect.tooltip3": "applies burns to all enemies",
+  "enchantment.immortal.la_palma_effect.tooltip4": "around %d blocks for %s seconds."
 }

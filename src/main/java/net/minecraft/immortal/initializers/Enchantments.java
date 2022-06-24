@@ -1,11 +1,10 @@
 package net.minecraft.immortal.initializers;
 
 import net.minecraft.enchantment.*;
-import net.minecraft.enchantment.Enchantment.Rarity;
-import net.minecraft.enchantment.ProtectionEnchantment.Type;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.immortal.enchantments.effect.LaPalmaEnchantment;
 import net.minecraft.immortal.enchantments.effect.WithersTouchEnchantment;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class Enchantments {
@@ -15,7 +14,7 @@ public class Enchantments {
     public static final LaPalmaEnchantment LA_PALMA_ENCHANTMENT = new LaPalmaEnchantment(ALL_ARMOR);
 
     private static void register(String name, Enchantment enchantment) {
-        Registry.register(Registry.ENCHANTMENT, name, enchantment);
+        Registry.register(Registry.ENCHANTMENT, new Identifier("immortal", name), enchantment);
     }
 
     public static void execute() {

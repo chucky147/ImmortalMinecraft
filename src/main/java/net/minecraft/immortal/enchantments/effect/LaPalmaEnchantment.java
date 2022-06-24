@@ -27,7 +27,7 @@ public class LaPalmaEnchantment extends Enchantment {
     @Override
     public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
         if(user != null) {
-            user.world.getOtherEntities(user, user.getBoundingBox().expand(2)).forEach(entity -> entity.setOnFireFor(2));
+            user.world.getOtherEntities(user, user.getBoundingBox().expand(1.5)).forEach(entity -> entity.setOnFireFor(2));
         }
         super.onUserDamaged(user, attacker, level);
     }

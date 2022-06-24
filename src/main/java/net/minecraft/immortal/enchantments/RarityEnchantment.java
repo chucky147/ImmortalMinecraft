@@ -4,6 +4,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.damage.DamageSource;
 
 public class RarityEnchantment extends Enchantment {
 
@@ -18,6 +19,12 @@ public class RarityEnchantment extends Enchantment {
     public float getAttackDamage(int level, EntityGroup group) {
         return getDamageByRarity();
     }
+
+    @Override
+    public int getProtectionAmount(int level, DamageSource source) {
+        return super.getProtectionAmount(getProtectionByRarity(), source);
+    }
+
     @Override
     public boolean isAvailableForRandomSelection() {
         return false;
@@ -26,6 +33,7 @@ public class RarityEnchantment extends Enchantment {
     public boolean isAvailableForEnchantedBookOffer() {
         return false;
     }
+
     private float getDamageByRarity() {
         return switch (this.getOrCreateTranslationKey()) {
             case UNCOMMON -> RarityDamage.UNCOMMON.getAttackMultiplier();
@@ -33,6 +41,14 @@ public class RarityEnchantment extends Enchantment {
             case EPIC -> RarityDamage.EPIC.getAttackMultiplier();
             case LEGENDARY -> RarityDamage.LEGENDARY.getAttackMultiplier();
             default -> 0.6f;
+        };
+    }
+    private int getProtectionByRarity() {
+        return switch (this.getOrCreateTranslationKey()) {
+            case UNCOMMON, RARE -> 1;
+            case EPIC -> 2;
+            case LEGENDARY -> 3;
+            default -> 0;
         };
     }
 }

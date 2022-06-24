@@ -11,7 +11,7 @@ public class Roll {
 
     public static RarityEnchantment rollRarity() {
         int dice = roll();
-        if (dice < 100) {
+        if (dice < 1) {
             return LEGENDARY_ENCHANTMENT;
         } else if (dice < 5) {
             return VERY_RARE_ENCHANTMENT;
